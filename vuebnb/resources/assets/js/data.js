@@ -1,4 +1,4 @@
-var sample = {
+export default {
   title: 'Central Downtown Apartment with Amenities',
   address: 'No. 11, Song-Sho Road, Taipei City, Taiwan 105',
   about: 'Come and stay at this modern and comfortable apartment! My home is centrally located right in the middle' +
