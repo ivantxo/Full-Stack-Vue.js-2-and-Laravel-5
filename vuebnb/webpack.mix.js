@@ -12,3 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+.styles([
+  'node_modules/open-sans-all/css/open-sans.css',
+  'node_modules/font-awesome/css/font-awesome.css',
+  'resourece/assets/css/style.css'
+], 'public/css/style.css');
