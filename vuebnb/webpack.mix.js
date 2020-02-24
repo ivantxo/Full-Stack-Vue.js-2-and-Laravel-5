@@ -16,4 +16,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
   'node_modules/open-sans-all/css/open-sans.css',
   'node_modules/font-awesome/css/font-awesome.css',
   'resourece/assets/css/style.css'
-], 'public/css/style.css');
+], 'public/css/style.css')
+.copy('node_modules/open-sans-all/fonts', 'pubic/fonts')
+.copy('node_modules/font-awesome/fonts', 'pubic/fonts')
+;
