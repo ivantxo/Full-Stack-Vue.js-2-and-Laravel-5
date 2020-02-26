@@ -1,6 +1,9 @@
 import "core-js/library/fn/object/assign";
 import Vue from 'vue';
-import sample from './data';
+import { populateAmenitiesAndPrices } from './helpers';
+
+let model = JSON.parse(window.vuebnb_listing_model);
+model = populateAmenitiesAndPrices(model);
 
 var app = new Vue({
   el: '#app',
@@ -19,10 +22,12 @@ var app = new Vue({
   // },
 
   // with polyfill
-  data: Object.assign(sample, {
+  data: Object.assign(model, {
     headerImageStyle: {
       'background-image': `url(${model.images[0]})`
     },
+    contracted: true,
+    modalOpen: false
   }),
   methods: {
     escapeKeyListener(evt) {
