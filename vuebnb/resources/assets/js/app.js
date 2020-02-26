@@ -1,29 +1,38 @@
+import "core-js/library/fn/object/assign";
 import Vue from 'vue';
 import sample from './data';
 
 var app = new Vue({
   el: '#app',
-  data: {
-    title: sample.title,
-    address: sample.address,
-    about: sample.about,
+  // with no polyfill
+  // data: {
+  //   title: sample.title,
+  //   address: sample.address,
+  //   about: sample.about,
+  //   headerImageStyle: {
+  //     'background-image': 'url(images/header.jpg)'
+  //   },
+  //   amenities: sample.amenities,
+  //   prices: sample.prices,
+  //   contracted: true,
+  //   modalOpen: false
+  // },
+
+  // with polyfill
+  data: Object.assign(sample, {
     headerImageStyle: {
-      'background-image': 'url(images/header.jpg)'
+      'background-image': `url(${model.images[0]})`
     },
-    amenities: sample.amenities,
-    prices: sample.prices,
-    contracted: true,
-    modalOpen: false
-  },
+  }),
   methods: {
-    escapeKeyListener: function(evt) {
+    escapeKeyListener(evt) {
       if (evt.keyCode === 27 && this.modalOpen) {
         this.modalOpen = false;
       }
     }
   },
   watch: {
-    modalOpen: function() {
+    modalOpen() {
       var className = 'modal-open';
       if (this.modalOpen) {
         document.body.classList.add(className);
@@ -32,10 +41,10 @@ var app = new Vue({
       }
     }
   },
-  created: function () {
+  created() {
     document.addEventListener('keyup', this.escapeKeyListener);
   },
-  destroyed: function () {
+  destroyed() {
     document.removeEventListener('keyup', this.escapeKeyListener);
   }
 });
